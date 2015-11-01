@@ -4,17 +4,21 @@
 
 Das System sucht nach einer speziellen Funktion namens `main` und führt diese aus:
 
-    int main()
-    {
-        printf("hello world!\n");
-        return 0;
-    }
+```C
+int main()
+{
+    printf("hello world!\n");
+    return 0;
+}
+```
 
 ##### Welchen Sinn hat das `\n` bei `printf`?
 
 Damit generiert man einen Zeilenumbruch. Dieser kann überall innerhalb der Gänsefüßchen stehen, nicht nur am Ende:
 
-    printf("one\ntwo\nthree\n\nI've come to collect the fee!\n");
+```C
+printf("one\ntwo\nthree\n\nI've come to collect the fee!\n");
+```
 
 ##### Warum steht da `int` statt `void`, und was bedeutet `return 0;`?
 
@@ -27,19 +31,21 @@ gibt es entsprechende Warnungen oder Fehlermeldungen.
 
 Dazu muss man in den runden Klammern hinter dem Funktionsnamen einen Parameter vom Typ `int` definieren:
 
-                       // ----- Parameter von print_neighbours   
-    void print_neighbours(int x)
-    {       
-        printf("%d liegt zwischen %d und %d\n", x, x-1, x+1);
-    }       // -------------------------------  -  ---  --- Argumente an scanf
+```C
+                   // ----- Parameter von print_neighbours
+void print_neighbours(int x)
+{
+    printf("%d liegt zwischen %d und %d\n", x, x-1, x+1);
+}       // -------------------------------  -  ---  --- Argumente an scanf
 
-    int main()
-    {
-        print_neighbours(42);
-        print_neighbours(97);
-        print_neighbours( 0);
-        return 0;     // -- Argument an print_neighbours
-    }
+int main()
+{
+    print_neighbours(42);
+    print_neighbours(97);
+    print_neighbours( 0);
+    return 0;     // -- Argument an print_neighbours
+}
+```
     
 Ein Parameter ist eine Art Platzhalter, der beim Aufruf der Funktion mit einem konkreten Wert befüllt wird.
 Diesen konkreten Wert nennt man auch Argument.
@@ -69,17 +75,23 @@ Im Rahmen von PR1 werden wir immer `double` verwenden, da es auf ein paar Bytes 
 
 Dazu definiert man zunächst eine Variable, in welcher die Zahl später einmal landen soll:
 
-    int a;
+```C
+int a;
+```
 
 Dann sollte man einen sinnvollen Text auf die Konsole schreiben,
 der dem Benutzer klar macht, dass er jetzt etwas eingeben soll,
 aber rein technisch ist das natürlich nicht erforderlich:
 
-    printf("Was ist ihre Lieblingszahl? ");
+```C
+printf("Was ist ihre Lieblingszahl? ");
+```
 
 Und zuletzt ruft man die Funktion `scanf` auf:
 
-    scanf("%d", &a);
+```C
+scanf("%d", &a);
+```
 
 ##### Was bedeutet das `&` vor `a`?
 
@@ -101,14 +113,18 @@ Dafür gibt es technische Gründe, die aber im Rahmen von PR1 nicht relevant sin
 
 Genau so, wie `main` das auch macht, also mit `int` statt `void` und einem `return`:
 
-    int average(int a, int b)
-    {
-        return (a + b) / 2;
-    }
+```C
+int average(int a, int b)
+{
+    return (a + b) / 2;
+}
+```
 
 Im Gegensatz zu `void`-Funktionen sollte man `average` aber nicht "einfach so" aufrufen:
 
-    average(10, 20);
+```C
+average(10, 20);
+```
 
 Das System generiert eine entsprechende Warnung, weil es keinen Sinn macht,
 den Durchschnitt von 10 und 20 zu berechnen und das Ergebnis (in diesem Fall 15) anschließend zu verwerfen.
@@ -116,23 +132,27 @@ Wir sollten irgendwas mit dem Ergebnis tun,
 zum Beispiel in einer Variable speichern oder als Argument an eine Funktion übergeben,
 ansonsten hätte der Computer den Durchschnitt ja ganz umsonst berechnet:
 
-    int x = average(10, 20);
+```C
+int x = average(10, 20);
 
-    printf("Die Antwort lautet %d\n", average(40, 44));
+printf("Die Antwort lautet %d\n", average(40, 44));
+```
 
 ##### Wie prüft man, ob eine Variable einen bestimmten Wert hat?
 
-    void pruefe_antwort(int x)
+```C
+void pruefe_antwort(int x)
+{
+    if (x == 42)
     {
-        if (x == 42)
-        {
-            printf("Korrekt!\n");
-        }
-        else
-        {
-            printf("Daneben!\n");
-        }
+        printf("Korrekt!\n");
     }
+    else
+    {
+        printf("Daneben!\n");
+    }
+}
+```
 
 ##### Was ist der Unterschied zwischen `=` und `==`?
 
@@ -154,19 +174,21 @@ d.h. `x` hat anschließend den Wert `42`, egal welcher Wert vorher in `x` gespei
 
 Genau wie in Karel, mit `&&` (und) bzw. `||` (oder):
 
-    if (0 <= x && x < 10)
-    {
-        printf("x besteht lediglich aus einer Ziffer!\n");
-    }
-    else
-    {
-        printf("x ist negativ und/oder besteht aus mehreren Ziffern!\n");
-    }
+```C
+if (0 <= x && x < 10)
+{
+    printf("x besteht lediglich aus einer Ziffer!\n");
+}
+else
+{
+    printf("x ist negativ und/oder besteht aus mehreren Ziffern!\n");
+}
 
-    if (x == 2 || x == 3 || x == 5 || x == 7)
-    {
-        printf("x ist eine einstellige Primzahl!\n");
-    }
+if (x == 2 || x == 3 || x == 5 || x == 7)
+{
+    printf("x ist eine einstellige Primzahl!\n");
+}
+```
 
 #### Buchempfehlung
 
