@@ -190,6 +190,62 @@ if (x == 2 || x == 3 || x == 5 || x == 7)
 }
 ```
 
+##### Was bedeutet `else if`?
+
+Wenn man mehrere Bedingungen nacheinander prüfen will, bis man die erste gefunden hat,
+die wahr ist, darf man die entsprechenden Fallunterscheidungen nicht einfach untereinander schreiben,
+sondern muss (zumindest in Karel) für jede weitere Bedingung einen neuen `else`-Block öffnen:
+
+```C
+if (leftIsClear())
+{
+    turnLeft();
+}
+else
+{
+    if (frontIsClear())
+    {
+    }
+    else
+    {
+        if (rightIsClear())
+        {
+            turnRight();
+        }
+        else
+        {
+            turnAround();
+        }
+    }
+}
+```
+
+In C sind diese Blockklammern nicht erforderlich.
+Wenn in dem `else`-Block lediglich ein weiteres `if` steht und sonst nichts weiteres,
+lässt man die geschweiften Klammern üblicherweise weg und schreibt das `if` direkt hinter das `else`:
+
+```C
+if (leftIsClear())
+{
+    turnLeft();
+}
+else if (frontIsClear())
+{
+}
+else if (rightIsClear())
+{
+    turnRight();
+}
+else
+{
+    turnAround();
+}
+```
+
+So bleibt der Code immer schön gleichmäßig links ausgerichtet.
+
+(Wie gesagt, in Karel dürfte man das so nicht schreiben, aber in C ist das möglich.)
+
 #### Buchempfehlung
 
 Nach intensiver Recherche scheint das für Anfänger am wenigsten schlecht geeignete Buch "Grundkurs C" von Jürgen Wolf zu sein. Folgende Kapitel empfehle ich für das Selbststudium zum Termin 3:
